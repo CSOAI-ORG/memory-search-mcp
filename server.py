@@ -105,6 +105,13 @@ def _get_db() -> sqlite3.Connection:
             VALUES ('delete', old.rowid, old.content, old.source_agent, old.memory_type, old.tags);
         END;
 
+        CREATE TRIGGER IF NOT EXISTS memories_au AFTER UPDATE ON memories BEGIN
+            INSERT INTO memories_fts(memories_fts, rowid, content, source_agent, memory_type, tags)
+            VALUES ('delete', old.rowid, old.content, old.source_agent, old.memory_type, old.tags);
+            INSERT INTO memories_fts(rowid, content, source_agent, memory_type, tags)
+            VALUES (new.rowid, new.content, new.source_agent, new.memory_type, new.tags);
+        END;
+
         CREATE TRIGGER IF NOT EXISTS knowledge_ai AFTER INSERT ON knowledge BEGIN
             INSERT INTO knowledge_fts(rowid, topic, content, source, tags)
             VALUES (new.rowid, new.topic, new.content, new.source, new.tags);
