@@ -1,0 +1,27 @@
+{
+  "name": "memory-search-mcp",
+  "description": "MEOK AI Labs \u2014 Persistent memory system for AI agents with semantic search, care-weighted",
+  "vendor": "MEOK AI Labs",
+  "homepage": "https://meok.ai",
+  "repository": "https://github.com/CSOAI-ORG/memory-search-mcp",
+  "runtime": "python",
+  "entrypoint": "server.py",
+  "tools": [
+    "record_memory",
+    "search_memory",
+    "add_knowledge",
+    "search_knowledge",
+    "list_memories",
+    "get_memory_stats",
+    "get_temporal_chain",
+    "consolidate_memories"
+  ],
+  "categories": [
+    "AI",
+    "Search"
+  ],
+  "pricing": {
+    "free": "50 calls/day",
+    "pro": "$9/mo"
+  }
+}

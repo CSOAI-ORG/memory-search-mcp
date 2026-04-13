@@ -5,24 +5,25 @@ build-backend = "hatchling.build"
 [project]
 name = "memory-search-mcp"
 version = "1.0.0"
-description = "MEOK AI Labs — memory-search-mcp MCP Server"
+description = "MEOK AI Labs — Persistent memory system for AI agents with semantic search, care-weighted"
+authors = [{name="MEOK AI Labs", email="nicholas@meok.ai"}]
 readme = "README.md"
-license = {file = "LICENSE"}
+license = {text = "MIT"}
 requires-python = ">=3.10"
-authors = [{name = "MEOK AI Labs", email = "nicholas@meok.ai"}]
-keywords = ["mcp", "ai", "meok", "model-context-protocol"]
+keywords = ["mcp", "mcp-server", "model-context-protocol", "claude", "ai-tools", "meok-ai-labs", "memory-search", "semantic-search", "knowledge-retrieval", "vector-search", "rag"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
     "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Intended Audience :: Developers",
 ]
-dependencies = ["mcp>=1.0.0"]
+dependencies = [
+    "mcp>=1.0.0",
+]
 
 [project.urls]
 Homepage = "https://meok.ai"
 Repository = "https://github.com/CSOAI-ORG/memory-search-mcp"
-Issues = "https://github.com/CSOAI-ORG/memory-search-mcp/issues"
-
-[project.scripts]
-memory-search-mcp = "memory_search_mcp.server:main"
+Documentation = "https://meok.ai/docs/memory-search-mcp"
+"Bug Tracker" = "https://github.com/CSOAI-ORG/memory-search-mcp/issues"

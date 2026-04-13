@@ -1,0 +1,10 @@
+name: memory-search-mcp
+description: "MEOK AI Labs — Persistent memory system for AI agents with semantic search, care-weighted"
+vendor: MEOK AI Labs
+homepage: https://meok.ai
+repository: https://github.com/CSOAI-ORG/memory-search-mcp
+license: MIT
+categories: [AI, Search]
+tags: [memory-search, semantic-search, knowledge-retrieval, vector-search, rag]
+runtime: python
+entrypoint: server.py
