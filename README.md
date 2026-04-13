@@ -1,3 +1,5 @@
+> **By [MEOK AI Labs](https://meok.ai)** — Sovereign AI tools for everyone.
+
 # Memory Search MCP Server
 
 Persistent memory system for AI agents and assistants. Record episodic memories with care-weighting and emotional valence, search with full-text relevance ranking, maintain a knowledge base of facts and reference material, follow temporal chains, and consolidate old memories automatically.
