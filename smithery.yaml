@@ -1,10 +1,127 @@
 name: memory-search-mcp
-description: "MEOK AI Labs — Persistent memory system for AI agents with semantic search, care-weighted"
-vendor: MEOK AI Labs
-homepage: https://meok.ai
-repository: https://github.com/CSOAI-ORG/memory-search-mcp
-license: MIT
-categories: [AI, Search]
-tags: [memory-search, semantic-search, knowledge-retrieval, vector-search, rag]
-runtime: python
-entrypoint: server.py
+description: "> **By [MEOK AI Labs](https://meok.ai)** \u2014 Sovereign AI tools for\
+  \ everyone."
+version: 1.0.0
+tools:
+- name: record_memory
+  description: Record a memory episode with care-weighting and emotional valence.
+  parameters:
+  - name: content
+    type: string
+    required: true
+  - name: source_agent
+    type: string
+    required: false
+  - name: memory_type
+    type: string
+    required: false
+  - name: care_weight
+    type: number
+    required: false
+  - name: importance
+    type: number
+    required: false
+  - name: emotional_valence
+    type: number
+    required: false
+  - name: tags
+    type: string
+    required: false
+  - name: parent_id
+    type: string
+    required: false
+- name: search_memory
+  description: Semantic search across all memories using full-text search with relevance
+    ranking.
+  parameters:
+  - name: query
+    type: string
+    required: true
+  - name: limit
+    type: integer
+    required: false
+  - name: care_weight_min
+    type: number
+    required: false
+  - name: memory_type
+    type: string
+    required: false
+  - name: tags
+    type: string
+    required: false
+- name: add_knowledge
+  description: Add a knowledge entry to the persistent knowledge base.
+  parameters:
+  - name: topic
+    type: string
+    required: true
+  - name: content
+    type: string
+    required: true
+  - name: source
+    type: string
+    required: false
+  - name: confidence
+    type: number
+    required: false
+  - name: tags
+    type: string
+    required: false
+- name: search_knowledge
+  description: Search the knowledge base by topic or content. Returns facts and reference
+  parameters:
+  - name: query
+    type: string
+    required: true
+  - name: limit
+    type: integer
+    required: false
+  - name: min_confidence
+    type: number
+    required: false
+- name: list_memories
+  description: List recent memories, optionally filtered by type. Sort by created_at,
+  parameters:
+  - name: limit
+    type: integer
+    required: false
+  - name: memory_type
+    type: string
+    required: false
+  - name: sort_by
+    type: string
+    required: false
+- name: get_memory_stats
+  description: 'Get statistics about the memory store: total count, type breakdown,'
+  parameters: []
+- name: get_temporal_chain
+  description: Follow the temporal chain from a memory episode forward or backward
+    in time.
+  parameters:
+  - name: episode_id
+    type: string
+    required: true
+  - name: direction
+    type: string
+    required: false
+  - name: max_steps
+    type: integer
+    required: false
+- name: consolidate_memories
+  description: Consolidate old, low-access memories by summarizing and archiving them.
+  parameters:
+  - name: older_than_days
+    type: integer
+    required: false
+  - name: min_access
+    type: integer
+    required: false
+- name: semantic_search
+  description: Semantic search using TF-IDF cosine similarity (no external deps).
+  parameters:
+  - name: query
+    type: string
+    required: true
+  - name: top_k
+    type: integer
+    required: false
