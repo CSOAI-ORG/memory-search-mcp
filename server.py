@@ -177,6 +177,7 @@ def record_memory(
     content: str,
     source_agent: str = "user",
     memory_type: str = "interaction",
+    api_key: str = "",
     care_weight: float = 0.5,
     importance: float = 0.5,
     emotional_valence: float = 0.5,
