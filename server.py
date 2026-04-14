@@ -140,8 +140,7 @@ def _simple_relevance(query: str, text: str) -> float:
 # ---------------------------------------------------------------------------
 mcp = FastMCP(
     "Memory Search MCP",
-    instructions="Persistent AI memory system with semantic search, care-weighted episodes, temporal chains, knowledge base, and memory consolidation.",
-)
+    instructions="Persistent AI memory system with semantic search, care-weighted episodes, temporal chains, knowledge base, and memory consolidation.")
 
 
 @mcp.tool()
@@ -153,8 +152,7 @@ def record_memory(
     importance: float = 0.5,
     emotional_valence: float = 0.5,
     tags: list[str] | None = None,
-    parent_id: str | None = None,
-) -> dict:
+    parent_id: str | None = None) -> dict:
     """Record a memory episode with care-weighting and emotional valence.
     Memory types: interaction, insight, decision, emotion.
     Care weight (0-1) determines retrieval priority.
@@ -176,8 +174,7 @@ def record_memory(
            emotional_valence, importance, tags, created_at, updated_at, parent_id)
            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
         (mid, content, source_agent, memory_type, care_weight,
-         emotional_valence, importance, tag_json, now, now, parent_id),
-    )
+         emotional_valence, importance, tag_json, now, now, parent_id))
     db.commit()
     db.close()
     return {"success": True, "episode_id": mid, "timestamp": now}
@@ -213,8 +210,7 @@ def search_memory(query: str, limit: int = 10, care_weight_min: float = 0.0,
         rows = db.execute(
             """SELECT * FROM memories WHERE content LIKE ? AND care_weight >= ?
                ORDER BY created_at DESC LIMIT ?""",
-            (f"%{query}%", care_weight_min, limit * 3),
-        ).fetchall()
+            (f"%{query}%", care_weight_min, limit * 3)).fetchall()
 
     results = []
     for row in rows:
@@ -243,8 +239,7 @@ def search_memory(query: str, limit: int = 10, care_weight_min: float = 0.0,
     for r in results:
         db.execute(
             "UPDATE memories SET access_count = access_count + 1, last_accessed = ? WHERE id = ?",
-            (datetime.now().isoformat(), r["id"]),
-        )
+            (datetime.now().isoformat(), r["id"]))
     db.commit()
     db.close()
     return {"results": results, "count": len(results), "query": query}
@@ -268,8 +263,7 @@ def add_knowledge(topic: str, content: str, source: str = "manual",
     db.execute(
         """INSERT INTO knowledge (id, topic, content, source, confidence, tags, created_at, updated_at)
            VALUES (?, ?, ?, ?, ?, ?, ?, ?)""",
-        (kid, topic, content, source, confidence, tag_json, now, now),
-    )
+        (kid, topic, content, source, confidence, tag_json, now, now))
     db.commit()
     db.close()
     return {"success": True, "knowledge_id": kid, "topic": topic}
@@ -294,14 +288,12 @@ def search_knowledge(query: str, limit: int = 10, min_confidence: float = 0.0) -
                AND k.confidence >= ?
                ORDER BY rank
                LIMIT ?""",
-            (fts_terms, min_confidence, limit),
-        ).fetchall()
+            (fts_terms, min_confidence, limit)).fetchall()
     except Exception:
         rows = db.execute(
             """SELECT * FROM knowledge WHERE (topic LIKE ? OR content LIKE ?)
                AND confidence >= ? ORDER BY created_at DESC LIMIT ?""",
-            (f"%{query}%", f"%{query}%", min_confidence, limit),
-        ).fetchall()
+            (f"%{query}%", f"%{query}%", min_confidence, limit)).fetchall()
 
     results = []
     for row in rows:
@@ -316,8 +308,7 @@ def search_knowledge(query: str, limit: int = 10, min_confidence: float = 0.0) -
         })
         db.execute(
             "UPDATE knowledge SET access_count = access_count + 1 WHERE id = ?",
-            (row["id"],),
-        )
+            (row["id"]))
 
     db.commit()
     db.close()
@@ -341,12 +332,10 @@ def list_memories(limit: int = 50, memory_type: str | None = None,
     if memory_type:
         rows = db.execute(
             f"SELECT * FROM memories WHERE memory_type = ? ORDER BY {sort_by} DESC LIMIT ?",
-            (memory_type, limit),
-        ).fetchall()
+            (memory_type, limit)).fetchall()
     else:
         rows = db.execute(
-            f"SELECT * FROM memories ORDER BY {sort_by} DESC LIMIT ?", (limit,),
-        ).fetchall()
+            f"SELECT * FROM memories ORDER BY {sort_by} DESC LIMIT ?", (limit)).fetchall()
 
     memories = []
     for row in rows:
@@ -415,7 +404,7 @@ def get_temporal_chain(episode_id: str, direction: str = "forward", max_steps: i
 
     db = _get_db()
     # Get the anchor memory
-    anchor = db.execute("SELECT * FROM memories WHERE id = ?", (episode_id,)).fetchone()
+    anchor = db.execute("SELECT * FROM memories WHERE id = ?", (episode_id)).fetchone()
     if not anchor:
         db.close()
         return {"error": f"Episode {episode_id} not found"}
@@ -426,8 +415,7 @@ def get_temporal_chain(episode_id: str, direction: str = "forward", max_steps: i
 
     rows = db.execute(
         f"SELECT * FROM memories WHERE created_at {op} ? ORDER BY created_at {order} LIMIT ?",
-        (anchor_time, max_steps),
-    ).fetchall()
+        (anchor_time, max_steps)).fetchall()
 
     chain = [{
         "id": anchor["id"],
@@ -462,8 +450,7 @@ def consolidate_memories(older_than_days: int = 30, min_access: int = 0) -> dict
 
     candidates = db.execute(
         "SELECT * FROM memories WHERE created_at < ? AND access_count <= ? ORDER BY created_at",
-        (cutoff, min_access),
-    ).fetchall()
+        (cutoff, min_access)).fetchall()
 
     if not candidates:
         db.close()
@@ -481,8 +468,7 @@ def consolidate_memories(older_than_days: int = 30, min_access: int = 0) -> dict
         """INSERT INTO memories (id, content, source_agent, memory_type, care_weight,
            importance, tags, created_at, updated_at)
            VALUES (?, ?, 'system', 'insight', 0.6, 0.7, '["consolidated"]', ?, ?)""",
-        (cid, summary, now, now),
-    )
+        (cid, summary, now, now))
 
     # Delete originals
     ids = [r["id"] for r in candidates]
