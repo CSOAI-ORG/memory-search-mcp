@@ -50,6 +50,22 @@ def _check_rate_limit(caller: str = "anonymous") -> Optional[str]:
     return None
 
 
+
+# ---------------------------------------------------------------------------
+# Simple deterministic embeddings (zero external deps)
+# ---------------------------------------------------------------------------
+import hashlib
+
+def _embed(text: str) -> list:
+    h = hashlib.md5(text.lower().encode()).hexdigest()
+    return [int(h[i:i+2], 16) / 255.0 for i in range(0, 32, 2)]
+
+def _cosine(a: list, b: list) -> float:
+    dot = sum(x * y for x, y in zip(a, b))
+    norm_a = sum(x * x for x in a) ** 0.5
+    norm_b = sum(x * x for x in b) ** 0.5
+    return dot / (norm_a * norm_b + 1e-9)
+
 # ---------------------------------------------------------------------------
 # Memory Store (SQLite + FTS5)
 # ---------------------------------------------------------------------------
@@ -78,6 +94,7 @@ def _get_db() -> sqlite3.Connection:
             updated_at TEXT NOT NULL,
             access_count INTEGER DEFAULT 0,
             last_accessed TEXT,
+            embedding TEXT,
             parent_id TEXT,
             FOREIGN KEY (parent_id) REFERENCES memories(id)
         );
