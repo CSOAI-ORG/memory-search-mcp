@@ -515,14 +515,14 @@ def consolidate_memories(older_than_days: int = 30, min_access: int = 0) -> dict
 
 
 @mcp.tool()
-def semantic_search(query: str, top_k: int = 5) -> str:
+def semantic_search(query: str, top_k: int = 5, api_key: str = "") -> str:
     """Semantic search using TF-IDF cosine similarity (no external deps)."""
     if err := _check_rate_limit(): return err
     import math
     from collections import Counter
     
     conn = _get_db()
-    rows = conn.execute('SELECT id, content, memory_type FROM memory_episodes ORDER BY created_at DESC LIMIT 500').fetchall()
+    rows = conn.execute('SELECT id, content, memory_type FROM memories ORDER BY created_at DESC LIMIT 500').fetchall()
     conn.close()
     
     if not rows:
