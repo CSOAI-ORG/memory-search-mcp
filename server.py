@@ -495,5 +495,44 @@ def consolidate_memories(older_than_days: int = 30, min_access: int = 0) -> dict
     }
 
 
+
+
+@mcp.tool()
+def semantic_search(query: str, top_k: int = 5) -> str:
+    """Semantic search using TF-IDF cosine similarity (no external deps)."""
+    if err := _check_rate_limit(): return err
+    import math
+    from collections import Counter
+    
+    conn = _get_db()
+    rows = conn.execute('SELECT id, content, memory_type FROM memory_episodes ORDER BY created_at DESC LIMIT 500').fetchall()
+    conn.close()
+    
+    if not rows:
+        return json.dumps({'results': [], 'note': 'No memories stored yet'})
+    
+    def tokenize(text):
+        return [w.lower() for w in re.findall(r'\w+', text) if len(w) > 2]
+    
+    q_tokens = tokenize(query)
+    q_tf = Counter(q_tokens)
+    
+    scored = []
+    for mid, content, mtype in rows:
+        d_tokens = tokenize(content)
+        d_tf = Counter(d_tokens)
+        common = set(q_tf) & set(d_tf)
+        if not common:
+            continue
+        dot = sum(q_tf[w] * d_tf[w] for w in common)
+        mag_q = math.sqrt(sum(v**2 for v in q_tf.values()))
+        mag_d = math.sqrt(sum(v**2 for v in d_tf.values()))
+        sim = dot / (mag_q * mag_d) if mag_q * mag_d > 0 else 0
+        scored.append((sim, mid, content[:200], mtype))
+    
+    scored.sort(reverse=True)
+    results = [{'id': mid, 'content': c, 'type': t, 'similarity': round(s, 3)} for s, mid, c, t in scored[:top_k]]
+    return json.dumps({'query': query, 'results': results, 'total_searched': len(rows)}, indent=2)
+
 if __name__ == "__main__":
     mcp.run()
