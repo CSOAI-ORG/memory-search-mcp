@@ -1,62 +1,81 @@
-# Memory Search MCP Server
+# Memory Search MCP
 
-> **By [MEOK AI Labs](https://meok.ai)** — Sovereign AI tools for everyone.
+> By [MEOK AI Labs](https://meok.ai) — Persistent AI memory system with semantic search, care-weighted episodes, and knowledge base
 
-Persistent memory system for AI agents and assistants. Record episodic memories with care-weighting and emotional valence, search with full-text relevance ranking, maintain a knowledge base, follow temporal chains, and consolidate old memories automatically.
-
-[![MCPize](https://img.shields.io/badge/MCPize-Listed-blue)](https://mcpize.com/mcp/memory-search)
-[![MIT License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
-[![MEOK AI Labs](https://img.shields.io/badge/MEOK_AI_Labs-255+_servers-purple)](https://meok.ai)
-
-## Tools
-
-| Tool | Description |
-|------|-------------|
-| `record_memory` | Record a memory episode with care-weighting and emotional valence |
-| `search_memory` | Semantic search across all memories with relevance ranking |
-| `add_knowledge` | Add a knowledge entry to the persistent knowledge base |
-| `search_knowledge` | Search the knowledge base by topic or content |
-| `list_memories` | List recent memories, optionally filtered by type |
-| `get_memory_stats` | Get statistics about the memory store |
-| `get_temporal_chain` | Follow the temporal chain from a memory forward or backward |
-| `consolidate_memories` | Consolidate old, low-access memories by summarizing them |
-
-## Quick Start
+## Installation
 
 ```bash
-pip install mcp
-git clone https://github.com/CSOAI-ORG/memory-search-mcp.git
-cd memory-search-mcp
+pip install memory-search-mcp
+```
+
+## Usage
+
+```bash
 python server.py
 ```
 
-## Claude Desktop Config
+## Tools
 
-```json
-{
-  "mcpServers": {
-    "memory-search": {
-      "command": "python",
-      "args": ["server.py"],
-      "cwd": "/path/to/memory-search-mcp"
-    }
-  }
-}
-```
+### `record_memory`
+Record a memory episode with care-weighting and emotional valence. Memory types: interaction, insight, decision, emotion.
 
-## Pricing
+**Parameters:**
+- `content` (str): Memory content
+- `source_agent` (str): Source agent (default: "user")
+- `memory_type` (str): Type: interaction, insight, decision, emotion (default: "interaction")
+- `care_weight` (float): Retrieval priority 0-1 (default: 0.5)
+- `importance` (float): Importance 0-1 (default: 0.5)
+- `emotional_valence` (float): Emotional valence 0-1 (default: 0.5)
+- `tags` (list[str]): Tags for categorization
+- `parent_id` (str): Parent episode ID for chains
 
-| Plan | Price | Requests |
-|------|-------|----------|
-| Free | $0/mo | 100 requests/day |
-| Pro | $9/mo | Unlimited + vector embeddings + cloud sync |
-| Enterprise | Contact us | Custom + team sharing + encryption at rest |
+### `search_memory`
+Semantic search across all memories using full-text search with relevance ranking.
 
-[Get on MCPize](https://mcpize.com/mcp/memory-search)
+**Parameters:**
+- `query` (str): Search query
+- `limit` (int): Max results (default: 10)
+- `care_weight_min` (float): Minimum care weight filter (default: 0.0)
+- `memory_type` (str): Filter by type
+- `tags` (list[str]): Filter by tags
 
-## Part of MEOK AI Labs
+### `add_knowledge`
+Add a knowledge entry to the persistent knowledge base (facts, definitions, reference material).
 
-This is one of 255+ MCP servers by MEOK AI Labs. Browse all at [meok.ai](https://meok.ai) or [GitHub](https://github.com/CSOAI-ORG).
+**Parameters:**
+- `topic` (str): Knowledge topic
+- `content` (str): Knowledge content
+- `source` (str): Source (default: "manual")
+- `confidence` (float): Confidence level (default: 0.8)
+- `tags` (list[str]): Tags
 
----
-**MEOK AI Labs** | [meok.ai](https://meok.ai) | nicholas@meok.ai | United Kingdom
+### `search_knowledge`
+Search the knowledge base by topic or content.
+
+**Parameters:**
+- `query` (str): Search query
+- `limit` (int): Max results (default: 10)
+- `min_confidence` (float): Minimum confidence (default: 0.0)
+
+### `list_memories`
+List recent memories, optionally filtered by type. Sort by created_at, care_weight, importance, or access_count.
+
+### `get_memory_stats`
+Get statistics about the memory store: total count, type breakdown, average care weight, most accessed, storage size.
+
+### `get_temporal_chain`
+Follow the temporal chain from a memory episode forward or backward in time.
+
+### `consolidate_memories`
+Consolidate old, low-access memories by summarizing and archiving them.
+
+### `semantic_search`
+Semantic search using TF-IDF cosine similarity (no external dependencies).
+
+## Authentication
+
+Free tier: 100 calls/day. Upgrade at [meok.ai/pricing](https://meok.ai/pricing) for unlimited access.
+
+## License
+
+MIT — MEOK AI Labs
