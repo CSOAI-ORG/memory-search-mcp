@@ -22,3 +22,6 @@ Repository = "https://github.com/CSOAI-ORG/memory-search-mcp"
 [tool.hatch.build.targets.wheel]
 packages = ["."]
 only-include = ["server.py"]
+
+[project.scripts]
+memory_search_mcp = "server:main"
