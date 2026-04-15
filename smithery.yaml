@@ -1,6 +1,6 @@
 name: memory-search-mcp
-description: Persistent AI memory system with semantic search, care-weighted episodes,
-  temporal chains, knowledge
+description: MCP server for memory search. Features record memory, search memory,
+  add knowledge. From MEOK AI Labs.
 version: 1.0.0
 tools:
 - name: record_memory
