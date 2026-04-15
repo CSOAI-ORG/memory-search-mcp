@@ -1,6 +1,6 @@
 name: memory-search-mcp
-description: "> **By [MEOK AI Labs](https://meok.ai)** \u2014 Sovereign AI tools for\
-  \ everyone."
+description: Persistent AI memory system with semantic search, care-weighted episodes,
+  temporal chains, knowledge
 version: 1.0.0
 tools:
 - name: record_memory
@@ -25,7 +25,7 @@ tools:
     type: number
     required: false
   - name: tags
-    type: string
+    type: array
     required: false
   - name: parent_id
     type: string
@@ -47,7 +47,7 @@ tools:
     type: string
     required: false
   - name: tags
-    type: string
+    type: array
     required: false
 - name: add_knowledge
   description: Add a knowledge entry to the persistent knowledge base.
@@ -65,7 +65,7 @@ tools:
     type: number
     required: false
   - name: tags
-    type: string
+    type: array
     required: false
 - name: search_knowledge
   description: Search the knowledge base by topic or content. Returns facts and reference

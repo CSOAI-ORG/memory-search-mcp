@@ -1,6 +1,6 @@
 {
   "name": "memory-search-mcp",
-  "description": "> **By [MEOK AI Labs](https://meok.ai)** \u2014 Sovereign AI tools for everyone.",
+  "description": "> **By [MEOK AI Labs](https://meok.ai)** \u2014 Persistent AI memory system with semantic search, care-weighted episodes, temporal chains, knowledge",
   "version": "1.0.0",
   "tools": [
     {
@@ -28,7 +28,7 @@
             "type": "number"
           },
           "tags": {
-            "type": "string"
+            "type": "array"
           },
           "parent_id": {
             "type": "string"
@@ -58,7 +58,7 @@
             "type": "string"
           },
           "tags": {
-            "type": "string"
+            "type": "array"
           }
         },
         "required": [
@@ -85,7 +85,7 @@
             "type": "number"
           },
           "tags": {
-            "type": "string"
+            "type": "array"
           }
         },
         "required": [
