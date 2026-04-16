@@ -473,6 +473,8 @@ def get_temporal_chain(episode_id: str, direction: str = "forward", max_steps: i
         return {"error": f"Episode {episode_id} not found"}
 
     anchor_time = anchor["created_at"]
+    if direction not in ("forward", "backward"):
+        direction = "forward"
     op = ">" if direction == "forward" else "<"
     order = "ASC" if direction == "forward" else "DESC"
 
