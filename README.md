@@ -1,3 +1,5 @@
+[![memory-search-mcp MCP server](https://glama.ai/mcp/servers/CSOAI-ORG/memory-search-mcp/badges/card.svg)](https://glama.ai/mcp/servers/CSOAI-ORG/memory-search-mcp)
+
 <div align="center">
 
 [![GitHub stars](https://img.shields.io/github/stars/CSOAI-ORG/memory-search-mcp)](https://github.com/CSOAI-ORG/memory-search-mcp/stargazers)
