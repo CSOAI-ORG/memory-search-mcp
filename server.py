@@ -207,6 +207,18 @@ def record_memory(
     When NOT to use:
         Not suitable for real-time production decision-making without
         human review of results.
+
+    Args:
+        content (str): The content to analyze or process.
+        source_agent (str): The source agent to analyze or process.
+        memory_type (str): The memory type to analyze or process.
+        api_key (str): The api key to analyze or process.
+        care_weight (float): The care weight to analyze or process.
+        importance (float): The importance to analyze or process.
+        emotional_valence (float): The emotional valence to analyze or process.
+        tags (list[str] | None): The tags to analyze or process.
+        parent_id (str | None): The parent id to analyze or process.
+
     Behavioral Transparency:
         - Side Effects: This tool is read-only and produces no side effects. It does not modify
           any external state, databases, or files. All output is computed in-memory and returned
@@ -269,6 +281,15 @@ def search_memory(query: str, limit: int = 10, care_weight_min: float = 0.0,
     When NOT to use:
         Not suitable for real-time production decision-making without
         human review of results.
+
+    Args:
+        query (str): The query to analyze or process.
+        limit (int): The limit to analyze or process.
+        care_weight_min (float): The care weight min to analyze or process.
+        memory_type (str | None): The memory type to analyze or process.
+        tags (list[str] | None): The tags to analyze or process.
+        api_key (str): The api key to analyze or process.
+
     Behavioral Transparency:
         - Side Effects: This tool is read-only and produces no side effects. It does not modify
           any external state, databases, or files. All output is computed in-memory and returned
@@ -369,6 +390,15 @@ def add_knowledge(topic: str, content: str, source: str = "manual",
     When NOT to use:
         Not suitable for real-time production decision-making without
         human review of results.
+
+    Args:
+        topic (str): The topic to analyze or process.
+        content (str): The content to analyze or process.
+        source (str): The source to analyze or process.
+        confidence (float): The confidence to analyze or process.
+        tags (list[str] | None): The tags to analyze or process.
+        api_key (str): The api key to analyze or process.
+
     Behavioral Transparency:
         - Side Effects: This tool is read-only and produces no side effects. It does not modify
           any external state, databases, or files. All output is computed in-memory and returned
@@ -425,6 +455,13 @@ def search_knowledge(query: str, limit: int = 10, min_confidence: float = 0.0, a
     When NOT to use:
         Not suitable for real-time production decision-making without
         human review of results.
+
+    Args:
+        query (str): The query to analyze or process.
+        limit (int): The limit to analyze or process.
+        min_confidence (float): The min confidence to analyze or process.
+        api_key (str): The api key to analyze or process.
+
     Behavioral Transparency:
         - Side Effects: This tool is read-only and produces no side effects. It does not modify
           any external state, databases, or files. All output is computed in-memory and returned
@@ -505,6 +542,13 @@ def list_memories(limit: int = 50, memory_type: str | None = None,
     When NOT to use:
         Not suitable for real-time production decision-making without
         human review of results.
+
+    Args:
+        limit (int): The limit to analyze or process.
+        memory_type (str | None): The memory type to analyze or process.
+        sort_by (str): The sort by to analyze or process.
+        api_key (str): The api key to analyze or process.
+
     Behavioral Transparency:
         - Side Effects: This tool is read-only and produces no side effects. It does not modify
           any external state, databases, or files. All output is computed in-memory and returned
@@ -577,6 +621,10 @@ def get_memory_stats(api_key: str = "") -> dict:
     When NOT to use:
         Not suitable for real-time production decision-making without
         human review of results.
+
+    Args:
+        api_key (str): The api key to analyze or process.
+
     Behavioral Transparency:
         - Side Effects: This tool is read-only and produces no side effects. It does not modify
           any external state, databases, or files. All output is computed in-memory and returned
@@ -651,6 +699,13 @@ def get_temporal_chain(episode_id: str, direction: str = "forward", max_steps: i
     When NOT to use:
         Not suitable for real-time production decision-making without
         human review of results.
+
+    Args:
+        episode_id (str): The episode id to analyze or process.
+        direction (str): The direction to analyze or process.
+        max_steps (int): The max steps to analyze or process.
+        api_key (str): The api key to analyze or process.
+
     Behavioral Transparency:
         - Side Effects: This tool is read-only and produces no side effects. It does not modify
           any external state, databases, or files. All output is computed in-memory and returned
@@ -730,6 +785,12 @@ def consolidate_memories(older_than_days: int = 30, min_access: int = 0, api_key
     When NOT to use:
         Not suitable for real-time production decision-making without
         human review of results.
+
+    Args:
+        older_than_days (int): The older than days to analyze or process.
+        min_access (int): The min access to analyze or process.
+        api_key (str): The api key to analyze or process.
+
     Behavioral Transparency:
         - Side Effects: This tool is read-only and produces no side effects. It does not modify
           any external state, databases, or files. All output is computed in-memory and returned
@@ -811,6 +872,12 @@ def semantic_search(query: str, top_k: int = 5, api_key: str = "") -> str:
     When NOT to use:
         Not suitable for real-time production decision-making without
         human review of results.
+
+    Args:
+        query (str): The query to analyze or process.
+        top_k (int): The top k to analyze or process.
+        api_key (str): The api key to analyze or process.
+
     Behavioral Transparency:
         - Side Effects: This tool is read-only and produces no side effects. It does not modify
           any external state, databases, or files. All output is computed in-memory and returned
