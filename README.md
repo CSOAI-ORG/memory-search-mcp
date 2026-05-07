@@ -1,3 +1,7 @@
+[![memory-search-mcp MCP server](https://glama.ai/mcp/servers/CSOAI-ORG/memory-search-mcp/badges/score.svg)](https://glama.ai/mcp/servers/CSOAI-ORG/memory-search-mcp)
+[![MCP Registry](https://img.shields.io/badge/MCP_Registry-Published-green)](https://registry.modelcontextprotocol.io)
+[![PyPI](https://img.shields.io/pypi/v/memory-search-mcp)](https://pypi.org/project/memory-search-mcp/)
+
 [![memory-search-mcp MCP server](https://glama.ai/mcp/servers/CSOAI-ORG/memory-search-mcp/badges/card.svg)](https://glama.ai/mcp/servers/CSOAI-ORG/memory-search-mcp)
 
 <div align="center">
