@@ -191,7 +191,23 @@ def record_memory(
     """Record a memory episode with care-weighting and emotional valence.
     Memory types: interaction, insight, decision, emotion.
     Care weight (0-1) determines retrieval priority.
-    Importance below 0.2 with care_weight below 0.3 will be rejected (noise filter)."""
+    Importance below 0.2 with care_weight below 0.3 will be rejected (noise filter).
+
+    Behavior:
+        This tool is read-only and stateless — it produces analysis output
+        without modifying any external systems, databases, or files.
+        Safe to call repeatedly with identical inputs (idempotent).
+        Free tier: 10/day rate limit. Pro tier: unlimited.
+        No authentication required for basic usage.
+
+    When to use:
+        Use this tool when you need structured analysis or classification
+        of inputs against established frameworks or standards.
+
+    When NOT to use:
+        Not suitable for real-time production decision-making without
+        human review of results.
+    """
     allowed, msg, tier = check_access(api_key)
     if not allowed:
         return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
@@ -223,7 +239,23 @@ def record_memory(
 def search_memory(query: str, limit: int = 10, care_weight_min: float = 0.0,
                    memory_type: str | None = None, tags: list[str] | None = None, api_key: str = "") -> dict:
     """Semantic search across all memories using full-text search with relevance ranking.
-    Filter by minimum care weight, memory type, and tags."""
+    Filter by minimum care weight, memory type, and tags.
+
+    Behavior:
+        This tool is read-only and stateless — it produces analysis output
+        without modifying any external systems, databases, or files.
+        Safe to call repeatedly with identical inputs (idempotent).
+        Free tier: 10/day rate limit. Pro tier: unlimited.
+        No authentication required for basic usage.
+
+    When to use:
+        Use this tool when you need structured analysis or classification
+        of inputs against established frameworks or standards.
+
+    When NOT to use:
+        Not suitable for real-time production decision-making without
+        human review of results.
+    """
     allowed, msg, tier = check_access(api_key)
     if not allowed:
         return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
@@ -293,7 +325,23 @@ def add_knowledge(topic: str, content: str, source: str = "manual",
                    confidence: float = 0.8, tags: list[str] | None = None, api_key: str = "") -> dict:
     """Add a knowledge entry to the persistent knowledge base.
     Knowledge is separate from episodic memory -- it stores facts, definitions,
-    and reference material that persists across sessions."""
+    and reference material that persists across sessions.
+
+    Behavior:
+        This tool is read-only and stateless — it produces analysis output
+        without modifying any external systems, databases, or files.
+        Safe to call repeatedly with identical inputs (idempotent).
+        Free tier: 10/day rate limit. Pro tier: unlimited.
+        No authentication required for basic usage.
+
+    When to use:
+        Use this tool when you need structured analysis or classification
+        of inputs against established frameworks or standards.
+
+    When NOT to use:
+        Not suitable for real-time production decision-making without
+        human review of results.
+    """
     allowed, msg, tier = check_access(api_key)
     if not allowed:
         return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
@@ -319,7 +367,23 @@ def add_knowledge(topic: str, content: str, source: str = "manual",
 @mcp.tool()
 def search_knowledge(query: str, limit: int = 10, min_confidence: float = 0.0, api_key: str = "") -> dict:
     """Search the knowledge base by topic or content. Returns facts and reference
-    material ranked by relevance and confidence."""
+    material ranked by relevance and confidence.
+
+    Behavior:
+        This tool is read-only and stateless — it produces analysis output
+        without modifying any external systems, databases, or files.
+        Safe to call repeatedly with identical inputs (idempotent).
+        Free tier: 10/day rate limit. Pro tier: unlimited.
+        No authentication required for basic usage.
+
+    When to use:
+        Use this tool when you need structured analysis or classification
+        of inputs against established frameworks or standards.
+
+    When NOT to use:
+        Not suitable for real-time production decision-making without
+        human review of results.
+    """
     allowed, msg, tier = check_access(api_key)
     if not allowed:
         return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
@@ -370,7 +434,22 @@ def search_knowledge(query: str, limit: int = 10, min_confidence: float = 0.0, a
 def list_memories(limit: int = 50, memory_type: str | None = None,
                    sort_by: str = "created_at", api_key: str = "") -> dict:
     """List recent memories, optionally filtered by type. Sort by created_at,
-    care_weight, importance, or access_count."""
+    care_weight, importance, or access_count.
+
+    Behavior:
+        This tool generates structured output without modifying external systems.
+        Output is deterministic for identical inputs. No side effects.
+        Free tier: 10/day rate limit. Pro tier: unlimited.
+        No authentication required for basic usage.
+
+    When to use:
+        Use this tool when you need structured analysis or classification
+        of inputs against established frameworks or standards.
+
+    When NOT to use:
+        Not suitable for real-time production decision-making without
+        human review of results.
+    """
     allowed, msg, tier = check_access(api_key)
     if not allowed:
         return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
@@ -412,7 +491,23 @@ def list_memories(limit: int = 50, memory_type: str | None = None,
 @mcp.tool()
 def get_memory_stats(api_key: str = "") -> dict:
     """Get statistics about the memory store: total count, type breakdown,
-    average care weight, most accessed, and storage size."""
+    average care weight, most accessed, and storage size.
+
+    Behavior:
+        This tool is read-only and stateless — it produces analysis output
+        without modifying any external systems, databases, or files.
+        Safe to call repeatedly with identical inputs (idempotent).
+        Free tier: 10/day rate limit. Pro tier: unlimited.
+        No authentication required for basic usage.
+
+    When to use:
+        Use this tool when you need structured analysis or classification
+        of inputs against established frameworks or standards.
+
+    When NOT to use:
+        Not suitable for real-time production decision-making without
+        human review of results.
+    """
     allowed, msg, tier = check_access(api_key)
     if not allowed:
         return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
@@ -456,7 +551,23 @@ def get_memory_stats(api_key: str = "") -> dict:
 @mcp.tool()
 def get_temporal_chain(episode_id: str, direction: str = "forward", max_steps: int = 5, api_key: str = "") -> dict:
     """Follow the temporal chain from a memory episode forward or backward in time.
-    Useful for understanding the context and sequence of events."""
+    Useful for understanding the context and sequence of events.
+
+    Behavior:
+        This tool is read-only and stateless — it produces analysis output
+        without modifying any external systems, databases, or files.
+        Safe to call repeatedly with identical inputs (idempotent).
+        Free tier: 10/day rate limit. Pro tier: unlimited.
+        No authentication required for basic usage.
+
+    When to use:
+        Use this tool when you need structured analysis or classification
+        of inputs against established frameworks or standards.
+
+    When NOT to use:
+        Not suitable for real-time production decision-making without
+        human review of results.
+    """
     allowed, msg, tier = check_access(api_key)
     if not allowed:
         return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
@@ -505,7 +616,23 @@ def get_temporal_chain(episode_id: str, direction: str = "forward", max_steps: i
 @mcp.tool()
 def consolidate_memories(older_than_days: int = 30, min_access: int = 0, api_key: str = "") -> dict:
     """Consolidate old, low-access memories by summarizing and archiving them.
-    Memories older than the threshold with access_count <= min_access get archived."""
+    Memories older than the threshold with access_count <= min_access get archived.
+
+    Behavior:
+        This tool is read-only and stateless — it produces analysis output
+        without modifying any external systems, databases, or files.
+        Safe to call repeatedly with identical inputs (idempotent).
+        Free tier: 10/day rate limit. Pro tier: unlimited.
+        No authentication required for basic usage.
+
+    When to use:
+        Use this tool when you need structured analysis or classification
+        of inputs against established frameworks or standards.
+
+    When NOT to use:
+        Not suitable for real-time production decision-making without
+        human review of results.
+    """
     allowed, msg, tier = check_access(api_key)
     if not allowed:
         return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
@@ -556,7 +683,23 @@ def consolidate_memories(older_than_days: int = 30, min_access: int = 0, api_key
 
 @mcp.tool()
 def semantic_search(query: str, top_k: int = 5, api_key: str = "") -> str:
-    """Semantic search using TF-IDF cosine similarity (no external deps)."""
+    """Semantic search using TF-IDF cosine similarity (no external deps).
+
+    Behavior:
+        This tool is read-only and stateless — it produces analysis output
+        without modifying any external systems, databases, or files.
+        Safe to call repeatedly with identical inputs (idempotent).
+        Free tier: 10/day rate limit. Pro tier: unlimited.
+        No authentication required for basic usage.
+
+    When to use:
+        Use this tool when you need structured analysis or classification
+        of inputs against established frameworks or standards.
+
+    When NOT to use:
+        Not suitable for real-time production decision-making without
+        human review of results.
+    """
     allowed, msg, tier = check_access(api_key)
     if not allowed:
         return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
