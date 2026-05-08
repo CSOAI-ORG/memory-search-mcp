@@ -1,45 +1,63 @@
-[![memory-search-mcp MCP server](https://glama.ai/mcp/servers/CSOAI-ORG/memory-search-mcp/badges/score.svg)](https://glama.ai/mcp/servers/CSOAI-ORG/memory-search-mcp)
-[![MCP Registry](https://img.shields.io/badge/MCP_Registry-Published-green)](https://registry.modelcontextprotocol.io)
-[![PyPI](https://img.shields.io/pypi/v/memory-search-mcp)](https://pypi.org/project/memory-search-mcp/)
-
-[![memory-search-mcp MCP server](https://glama.ai/mcp/servers/CSOAI-ORG/memory-search-mcp/badges/card.svg)](https://glama.ai/mcp/servers/CSOAI-ORG/memory-search-mcp)
-
 <div align="center">
 
-[![GitHub stars](https://img.shields.io/github/stars/CSOAI-ORG/memory-search-mcp)](https://github.com/CSOAI-ORG/memory-search-mcp/stargazers)
+# Memory Search MCP
 
-# umemoryU searchU mcp
+**MCP server for memory search mcp operations**
 
-****
-
-[![npm version](https://img.shields.io/npm/v/@meok-ai/memory-search-mcp)](https://www.npmjs.com/package/@meok-ai/memory-search-mcp)
+[![PyPI](https://img.shields.io/pypi/v/meok-memory-search-mcp)](https://pypi.org/project/meok-memory-search-mcp/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![MEOK AI Labs](https://img.shields.io/badge/MEOK_AI_Labs-255+_servers-purple)](https://meok.ai)
-
-[Installation](#installation) · [Docs](https://csoai.org) · [Report Bug](https://github.com/CSOAI-ORG/memory-search-mcp/issues)
+[![MEOK AI Labs](https://img.shields.io/badge/MEOK_AI_Labs-MCP_Server-purple)](https://meok.ai)
 
 </div>
 
----
+## Overview
+
+Memory Search MCP provides AI-powered tools via the Model Context Protocol (MCP).
+
+## Tools
+
+| Tool | Description |
+|------|-------------|
+| `record_memory` | Record a memory episode with care-weighting and emotional valence. |
+| `search_memory` | Semantic search across all memories using full-text search with relevance rankin |
+| `add_knowledge` | Add a knowledge entry to the persistent knowledge base. |
+| `search_knowledge` | Search the knowledge base by topic or content. Returns facts and reference |
+| `list_memories` | List recent memories, optionally filtered by type. Sort by created_at, |
+| `get_memory_stats` | Get statistics about the memory store: total count, type breakdown, |
+| `get_temporal_chain` | Follow the temporal chain from a memory episode forward or backward in time. |
+| `consolidate_memories` | Consolidate old, low-access memories by summarizing and archiving them. |
+| `semantic_search` | Semantic search using TF-IDF cosine similarity (no external deps). |
 
 ## Installation
 
 ```bash
-pip install memory-search-mcp
-# or
-npm install -g @meok-ai/memory-search-mcp
+pip install meok-memory-search-mcp
 ```
 
-## Quick Start
+## Usage with Claude Desktop
 
-See the project repository for full documentation and examples.
+Add to your Claude Desktop MCP config (`claude_desktop_config.json`):
 
-## Enterprise Support
+```json
+{
+  "mcpServers": {
+    "memory-search-mcp": {
+      "command": "python",
+      "args": ["-m", "meok_memory_search_mcp.server"]
+    }
+  }
+}
+```
 
-- 📧 nicholas@csoai.org
-- 🌐 [CSOAI.org](https://csoai.org)
+## Usage with FastMCP
+
+```python
+from mcp.server.fastmcp import FastMCP
+
+# This server exposes 9 tool(s) via MCP
+# See server.py for full implementation
+```
 
 ## License
 
-MIT © [CSOAI](https://csoai.org)
-<!-- mcp-name: io.github.CSOAI-ORG/memory-search-mcp -->
+MIT © [MEOK AI Labs](https://meok.ai)
