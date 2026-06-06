@@ -1,36 +1,48 @@
-# Memory Search MCP
-
-> Persistent AI memory system with semantic search, care-weighted episodes, temporal chains, knowle...
-
-`memory-search-mcp` is a Model Context Protocol (MCP) server by MEOK AI Labs.
+# memory-search-mcp
+# **MCP server for memory search mcp operations**
 
 ## Install
-
 ```bash
 pip install memory-search-mcp
 ```
 
-Or run without installing:
-
-```bash
-uvx memory-search-mcp
-```
+## Auth & Rate Limits
+- Free tier: 10 calls/day. No API key required.
+- Pro tier (£79/mo): unlimited + signed attestations.
+- Enterprise (£1,499/mo): white-label.
 
 ## Tools
 
-- `record_memory` — Record a memory episode with care-weighting and emotional valence.
-- `search_memory` — Semantic search across all memories using full-text search with relevance ranking.
-- `add_knowledge` — Add a knowledge entry to the persistent knowledge base.
-- `search_knowledge` — Search the knowledge base by topic or content. Returns facts and reference
-- `list_memories` — List recent memories, optionally filtered by type. Sort by created_at,
-- `get_memory_stats` — Get statistics about the memory store: total count, type breakdown,
-- `get_temporal_chain` — Follow the temporal chain from a memory episode forward or backward in time.
-- `consolidate_memories` — Consolidate old, low-access memories by summarizing and archiving them.
-- `semantic_search` — Semantic search using TF-IDF cosine similarity (no external deps).
+### `record_memory`
+Record a memory episode with care-weighting and emotional valence.
 
-## Links
+### `search_memory`
+Semantic search across all memories using full-text search with relevance ranking.
 
-- Source: https://github.com/CSOAI-ORG/memory-search-mcp
-- PyPI: https://pypi.org/project/memory-search-mcp/
-- MEOK AI Labs: https://meok.ai
-- Council of AI: https://councilof.ai
+### `add_knowledge`
+Add a knowledge entry to the persistent knowledge base.
+
+### `search_knowledge`
+Search the knowledge base by topic or content. Returns facts and reference
+
+### `list_memories`
+List recent memories, optionally filtered by type. Sort by created_at,
+
+### `get_memory_stats`
+Get statistics about the memory store: total count, type breakdown,
+
+### `get_temporal_chain`
+Follow the temporal chain from a memory episode forward or backward in time.
+
+### `consolidate_memories`
+Consolidate old, low-access memories by summarizing and archiving them.
+
+### `semantic_search`
+Semantic search using TF-IDF cosine similarity (no external deps).
+
+
+## Maintainer
+MEOK AI Labs · hello@meok.ai · https://meok.ai · MIT licensed
+
+## Pairs with
+Governance moat: pair this tool with any of MEOK's 38 governance MCPs (EU AI Act, DORA, NIS2, CRA, GDPR, ISO 42001, etc.) for full compliance coverage.

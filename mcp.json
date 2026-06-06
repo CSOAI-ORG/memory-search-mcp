@@ -1,0 +1,10 @@
+{
+  "name": "Memory Search",
+  "description": "Vector-searchable long-term memory with persistent agent context",
+  "vendor": "MEOK AI Labs",
+  "sourceUrl": "https://github.com/CSOAI-ORG/memory-search-mcp",
+  "homepage": "https://meok.ai/mcp/memory-search-mcp",
+  "license": "MIT",
+  "runtime": "python",
+  "entryPoint": "server.py"
+}

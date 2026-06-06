@@ -1,0 +1,9 @@
+# memory-search-mcp - Auto-trigger Rules
+
+When the user asks about memory search, use memory-search-mcp tools: record_memory, search_memory, add_knowledge, search_knowledge, list_memories
+
+**MCP server for memory search mcp operations**
+
+Install: `pip install memory-search-mcp`
+
+By MEOK AI Labs — MIT licensed.

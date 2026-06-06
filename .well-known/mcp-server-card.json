@@ -1,0 +1,6 @@
+{
+  "serverInfo": { "name": "memory-search-mcp", "version": "1.0.0" },
+  "tools": [
+    {"name": "record_memory", "description": "MCP tool from MEOK AI Labs"}, {"name": "search_memory", "description": "MCP tool from MEOK AI Labs"}, {"name": "add_knowledge", "description": "MCP tool from MEOK AI Labs"}, {"name": "search_knowledge", "description": "MCP tool from MEOK AI Labs"}, {"name": "list_memories", "description": "MCP tool from MEOK AI Labs"}
+  ]
+}
