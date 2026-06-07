@@ -1,0 +1,104 @@
+{
+  "name": "memory-search-mcp",
+  "description": "Memory Search MCP Server by MEOK AI Labs",
+  "url": "https://proofof.ai/scorecard/memory-search-mcp.html",
+  "version": "1.0.6",
+  "protocolVersion": "0.2.0",
+  "provider": {
+    "organization": "MEOK AI Labs",
+    "url": "https://meok.ai"
+  },
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false
+  },
+  "defaultInputModes": [
+    "text"
+  ],
+  "defaultOutputModes": [
+    "text"
+  ],
+  "skills": [
+    {
+      "id": "record_memory",
+      "name": "Record Memory",
+      "description": "record_memory via memory-search-mcp",
+      "tags": [
+        "mcp",
+        "compliance"
+      ]
+    },
+    {
+      "id": "search_memory",
+      "name": "Search Memory",
+      "description": "search_memory via memory-search-mcp",
+      "tags": [
+        "mcp",
+        "compliance"
+      ]
+    },
+    {
+      "id": "add_knowledge",
+      "name": "Add Knowledge",
+      "description": "add_knowledge via memory-search-mcp",
+      "tags": [
+        "mcp",
+        "compliance"
+      ]
+    },
+    {
+      "id": "search_knowledge",
+      "name": "Search Knowledge",
+      "description": "search_knowledge via memory-search-mcp",
+      "tags": [
+        "mcp",
+        "compliance"
+      ]
+    },
+    {
+      "id": "list_memories",
+      "name": "List Memories",
+      "description": "list_memories via memory-search-mcp",
+      "tags": [
+        "mcp",
+        "compliance"
+      ]
+    },
+    {
+      "id": "get_memory_stats",
+      "name": "Get Memory Stats",
+      "description": "get_memory_stats via memory-search-mcp",
+      "tags": [
+        "mcp",
+        "compliance"
+      ]
+    },
+    {
+      "id": "get_temporal_chain",
+      "name": "Get Temporal Chain",
+      "description": "get_temporal_chain via memory-search-mcp",
+      "tags": [
+        "mcp",
+        "compliance"
+      ]
+    },
+    {
+      "id": "consolidate_memories",
+      "name": "Consolidate Memories",
+      "description": "consolidate_memories via memory-search-mcp",
+      "tags": [
+        "mcp",
+        "compliance"
+      ]
+    },
+    {
+      "id": "semantic_search",
+      "name": "Semantic Search",
+      "description": "semantic_search via memory-search-mcp",
+      "tags": [
+        "mcp",
+        "compliance"
+      ]
+    }
+  ]
+}

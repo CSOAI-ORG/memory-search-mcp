@@ -1,0 +1,27 @@
+{
+  "acpVersion": "0.1",
+  "agent": {
+    "name": "memory-search-mcp",
+    "description": "Memory Search MCP Server by MEOK AI Labs",
+    "version": "1.0.6",
+    "provider": "MEOK AI Labs",
+    "interfaces": [
+      {
+        "type": "mcp",
+        "transport": "stdio",
+        "package": "memory-search-mcp"
+      }
+    ],
+    "capabilities": [
+      "record_memory",
+      "search_memory",
+      "add_knowledge",
+      "search_knowledge",
+      "list_memories",
+      "get_memory_stats",
+      "get_temporal_chain",
+      "consolidate_memories",
+      "semantic_search"
+    ]
+  }
+}
