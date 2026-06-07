@@ -1,0 +1,36 @@
+# Memory Search MCP
+
+> Persistent AI memory system with semantic search, care-weighted episodes, temporal chains, knowle...
+
+`memory-search-mcp` is a Model Context Protocol (MCP) server by MEOK AI Labs.
+
+## Install
+
+```bash
+pip install memory-search-mcp
+```
+
+Or run without installing:
+
+```bash
+uvx memory-search-mcp
+```
+
+## Tools
+
+- `record_memory` — Record a memory episode with care-weighting and emotional valence.
+- `search_memory` — Semantic search across all memories using full-text search with relevance ranking.
+- `add_knowledge` — Add a knowledge entry to the persistent knowledge base.
+- `search_knowledge` — Search the knowledge base by topic or content. Returns facts and reference
+- `list_memories` — List recent memories, optionally filtered by type. Sort by created_at,
+- `get_memory_stats` — Get statistics about the memory store: total count, type breakdown,
+- `get_temporal_chain` — Follow the temporal chain from a memory episode forward or backward in time.
+- `consolidate_memories` — Consolidate old, low-access memories by summarizing and archiving them.
+- `semantic_search` — Semantic search using TF-IDF cosine similarity (no external deps).
+
+## Links
+
+- Source: https://github.com/CSOAI-ORG/memory-search-mcp
+- PyPI: https://pypi.org/project/memory-search-mcp/
+- MEOK AI Labs: https://meok.ai
+- Council of AI: https://councilof.ai
