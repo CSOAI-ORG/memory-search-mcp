@@ -4,9 +4,8 @@
   "version": "1.0.7",
   "description": "Memory Search MCP Server by MEOK AI Labs",
   "repository": {
-    "type": "git",
     "url": "https://github.com/CSOAI-ORG/memory-search-mcp",
-    "source": "https://github.com/CSOAI-ORG/memory-search-mcp"
+    "source": "github"
   },
   "packages": [
     {
